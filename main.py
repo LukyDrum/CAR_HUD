@@ -6,37 +6,41 @@ import subprocess
 tabs = ["Dashboard", "LEDs", "Android Auto"]
 tab_index = 0
 
+# Starts the "autoapp" from OpenAuto
 def start_android_auto():
     subprocess.run(["sudo", "autoapp"])
 
+# Called when switing tabs using the top buttons
 def tab_button_clicked():
     global tab_index, tabview
     new_tab = tabview.get()
     tab_index = tabs.index(new_tab)
 
+# Cycle to the next tab
 def next_tab():
     global tab_index, tabview
     tab_index = (tab_index + 1) % len(tabs)
     tabview.set(tabs[tab_index])
 
+# Cycle to the previous tab
 def prev_tab():
     global tab_index, tabview
     tab_index = (tab_index - 1) % len(tabs)
     tabview.set(tabs[tab_index])
 
-
+# Setup appearence
 FONT_NAME = "Roboto"
 FONT_SIZE_NORMAL = 30
 FONT_SIZE_LARGE = 50
 ctk.set_appearance_mode("System")
 ctk.set_default_color_theme("./themes/dark-blue.json")
 
-
+# Initialize the app
 app = ctk.CTk()
 app.attributes('-fullscreen', True) # Set fullscreen
 app.title("Car HUD")
 
-# Content
+# Content of the app
 tabview = ctk.CTkTabview(master=app, command=tab_button_clicked)
 tabview.pack(padx=20, pady=20, fill="both", expand=True)
 
