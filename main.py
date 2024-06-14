@@ -34,7 +34,7 @@ FONT_NAME = "Roboto"
 FONT_SIZE_NORMAL = 30
 FONT_SIZE_LARGE = 50
 FONT_SIZE_XXLARGE = 120
-ctk.set_appearance_mode("System")
+ctk.set_appearance_mode("dark")
 theme_path = os.path.dirname(__file__) + "/themes/dark-blue.json"
 ctk.set_default_color_theme(theme_path)
 
@@ -57,8 +57,8 @@ for tab in tabs:
     prev_butt = ctk.CTkButton(tabview.tab(tab), text="←", font=(FONT_NAME, FONT_SIZE_LARGE), command=prev_tab)
     next_butt = ctk.CTkButton(tabview.tab(tab), text="→", font=(FONT_NAME, FONT_SIZE_LARGE), command=next_tab)
 
-    prev_butt.place(relx=0.05, rely=0.5, anchor="center")
-    next_butt.place(relx=0.95, rely=0.5, anchor="center")
+    prev_butt.place(relx=0.1, rely=0.5, anchor="center")
+    next_butt.place(relx=0.9, rely=0.5, anchor="center")
 
 # Android Auto tab
 AA_tab = tabview.tab("Android Auto")
