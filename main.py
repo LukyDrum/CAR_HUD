@@ -3,7 +3,7 @@ import subprocess
 
 
 # Tabs of the app and the index of the current tab
-tabs = ["Dashboard", "LEDs", "Android Auto"]
+tabs = ["Dashboard", "LEDs", "Android Auto", "Settings"]
 tab_index = 0
 
 # Starts the "autoapp" from OpenAuto
@@ -69,6 +69,11 @@ speed_label = ctk.CTkLabel(master=dashboard_tab, text="42", font=(FONT_NAME, FON
 rpm_progress = ctk.CTkProgressBar(master=dashboard_tab, orientation="horizontal", width=screen_width//2, height=50)
 speed_label.place(relx=0.5, rely=0.4, anchor="center")
 rpm_progress.place(relx=0.5, rely=0.7, anchor="center")
+
+# Settings tab
+settings_tab = tabview.tab("Settings")
+exit_button = ctk.CTkButton(master=settings_tab, text="Exit", font=(FONT_NAME, FONT_SIZE_LARGE), command=app.destroy)
+exit_button.place(relx=0.5, rely=0.5, anchor="center")
 
 
 if __name__ == "__main__":
