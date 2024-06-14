@@ -9,9 +9,10 @@ tab_index = 0
 def start_android_auto():
     subprocess.run(["sudo", "autoapp"])
 
-def tab_button_clicked(tab: str):
-    global tab_index
-    tab_index = tabs.index(tab)
+def tab_button_clicked():
+    global tab_index, tabview
+    new_tab = tabview.get()
+    tab_index = tabs.index(new_tab)
 
 def next_tab():
     global tab_index, tabview
