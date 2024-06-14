@@ -1,5 +1,6 @@
 import customtkinter as ctk
 import subprocess
+import os
 
 
 # Tabs of the app and the index of the current tab
@@ -34,7 +35,8 @@ FONT_SIZE_NORMAL = 30
 FONT_SIZE_LARGE = 50
 FONT_SIZE_XXLARGE = 120
 ctk.set_appearance_mode("System")
-ctk.set_default_color_theme("./themes/dark-blue.json")
+theme_path = os.path.dirname(__file__) + "/themes/dark-blue.json"
+ctk.set_default_color_theme(theme_path)
 
 # Initialize the app
 app = ctk.CTk()
