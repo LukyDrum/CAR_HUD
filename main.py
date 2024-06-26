@@ -104,7 +104,7 @@ rpm_progress.place(relx=0.5, rely=0.7, anchor="center")
 settings_tab = tabview.tab("Settings")
 switch_1 = ctk.CTkSwitch(
     master=settings_tab,
-    text="Dark/Light Theme",
+    text="Light/Dark Theme",
     command=switch_theme,
     variable=theme_switch_var,
     onvalue=DARK,
