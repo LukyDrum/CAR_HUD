@@ -2,8 +2,6 @@ import customtkinter as ctk
 import subprocess
 import os
 
-AUTOAPP_PATH = "~/openauto/bin/autoapp"
-
 
 # Tabs of the app and the index of the current tab
 tabs = ["Dashboard", "LEDs", "Android Auto", "Settings"]
@@ -11,7 +9,7 @@ tab_index = 0
 
 # Starts the "autoapp" from OpenAuto
 def start_android_auto():
-    subprocess.run(["sudo", AUTOAPP_PATH])
+    subprocess.run(["sudo", "autoapp"])
 
 # Called when switing tabs using the top buttons
 def tab_button_clicked():
