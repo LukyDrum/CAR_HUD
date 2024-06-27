@@ -12,7 +12,7 @@ class InfoPanel:
         self.frame.pack()
 
     def setup(self) -> None:
-        clock = ctk.CTkLabel(master=self.frame, text="00:00", font=(FONT_NAME, FONT_SIZE_XLARGE))
+        clock = ctk.CTkLabel(master=self.frame, text="00:00", font=(FONT_NAME, FONT_SIZE_LARGER))
         clock.pack()
 
         self.clock = clock
