@@ -15,13 +15,6 @@ from info_panel import InfoPanel
 tabs = ["Dashboard", "LEDs", "Android Auto", "Settings"]
 tab_index = 0
 
-# Dashboard object
-dashboard = dashboard.Dashboard()
-# Dummy values just for fun
-dashboard.rpm = 800
-dashboard.speed = 42
-
-
 # Called when switing tabs using the top buttons
 def tab_button_clicked():
     global tab_index, tabview
@@ -52,10 +45,6 @@ ctk.set_default_color_theme(theme_path)
 app = ctk.CTk()
 app.attributes("-fullscreen", True)  # Set fullscreen
 app.title("Car HUD")
-
-# Get the size of the screen
-screen_width = app.winfo_screenwidth()
-screen_height = app.winfo_screenheight()
 
 # Content of the app
 tabview = ctk.CTkTabview(master=app, command=tab_button_clicked)
