@@ -4,7 +4,6 @@ from constants import *
 from tab import Tab
 from dashboard import Dashboard
 
-from random import randint
 
 class DashboardTab(Tab):
     def __init__(self, app: ctk.CTk, tab: ctk.CTkFrame) -> None:
