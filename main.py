@@ -9,6 +9,8 @@ from settings_tab import SettingsTab
 from androidauto_tab import AndroidAutoTab
 from leds_tab import LEDsTab
 
+from info_panel import InfoPanel
+
 # Tabs of the app and the index of the current tab
 tabs = ["Dashboard", "LEDs", "Android Auto", "Settings"]
 tab_index = 0
@@ -59,6 +61,11 @@ screen_height = app.winfo_screenheight()
 tabview = ctk.CTkTabview(master=app, command=tab_button_clicked)
 tabview.pack(padx=20, pady=20, fill="both", expand=True)
 
+# Add infopanel 
+info_panel = InfoPanel(app)
+info_panel.setup()
+
+
 for tab in tabs:
     tabview.add(tab)
     # Place previous and next tab buttons
@@ -90,4 +97,5 @@ leds_tab.setup()
 
 if __name__ == "__main__":
     dashboard_tab.update_loop()
+    info_panel.update_loop()
     app.mainloop()
