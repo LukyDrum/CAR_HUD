@@ -5,7 +5,7 @@ import os
 from constants import *
 import dashboard
 from tabs.dashboard_tab import DashboardTab
-
+from tabs.settings_tab import SettingsTab
 
 # Tabs of the app and the index of the current tab
 tabs = ["Dashboard", "LEDs", "Android Auto", "Settings"]
@@ -44,11 +44,6 @@ def prev_tab():
     tabview.set(tabs[tab_index])
 
 
-# Switch theme from light to dark and viceversa
-def switch_theme():
-    ctk.set_appearance_mode(theme_switch_var.get())
-
-
 # Setup appearence
 ctk.set_appearance_mode("dark")
 theme_path = os.path.dirname(__file__) + THEME
@@ -58,8 +53,6 @@ ctk.set_default_color_theme(theme_path)
 app = ctk.CTk()
 app.attributes("-fullscreen", True)  # Set fullscreen
 app.title("Car HUD")
-# CTK Variables
-theme_switch_var = ctk.StringVar(value=DARK)
 
 # Get the size of the screen
 screen_width = app.winfo_screenwidth()
@@ -94,25 +87,8 @@ dashboard_tab = DashboardTab(app, tabview.tab("Dashboard"))
 dashboard_tab.setup()
 
 # Settings tab
-settings_tab = tabview.tab("Settings")
-switch_1 = ctk.CTkSwitch(
-    master=settings_tab,
-    text="Light/Dark Theme",
-    command=switch_theme,
-    variable=theme_switch_var,
-    onvalue=DARK,
-    offvalue=LIGHT,
-    font=(FONT_NAME, FONT_SIZE_LARGE),
-)
-switch_1.place(relx=0.5, rely=0.4, anchor="center")
-exit_button = ctk.CTkButton(
-    master=settings_tab,
-    text="Exit",
-    font=(FONT_NAME, FONT_SIZE_LARGE),
-    command=app.destroy,
-)
-exit_button.place(relx=0.5, rely=0.6, anchor="center")
-
+settings_tab = SettingsTab(app, tabview.tab("Settings"))
+settings_tab.setup()
 
 if __name__ == "__main__":
     app.mainloop()
