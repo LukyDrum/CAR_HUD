@@ -30,4 +30,4 @@ class DashboardTab(Tab):
         self.rpm_progress.set(self.dashboard.get_rpm_percentage())
         self.rpm_progress.configure(progress_color=self.dashboard.get_rpm_color().get_hex())
 
-        self.app.after(100, self.update_loop)
+        self.app.after(UPDATE_TIME, self.update_loop)
