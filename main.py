@@ -7,6 +7,7 @@ import dashboard
 from dashboard_tab import DashboardTab
 from settings_tab import SettingsTab
 from androidauto_tab import AndroidAutoTab
+from leds_tab import LEDsTab
 
 # Tabs of the app and the index of the current tab
 tabs = ["Dashboard", "LEDs", "Android Auto", "Settings"]
@@ -82,6 +83,10 @@ dashboard_tab.setup()
 # Settings tab
 settings_tab = SettingsTab(app, tabview.tab("Settings"))
 settings_tab.setup()
+
+# LEDs tab
+leds_tab = LEDsTab(app, tabview.tab("LEDs"))
+leds_tab.setup()
 
 if __name__ == "__main__":
     dashboard_tab.update_loop()
