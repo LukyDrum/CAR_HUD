@@ -10,7 +10,7 @@ class SettingsTab(Tab):
         self.theme_switch_var = ctk.StringVar(value=DARK)
 
     def setup(self) -> None:
-        switch_1 = ctk.CTkSwitch(
+        switch = ctk.CTkSwitch(
             master=self.tab,
             text="Light/Dark Theme",
             command=self.switch_theme,
@@ -19,7 +19,7 @@ class SettingsTab(Tab):
             offvalue=LIGHT,
             font=(FONT_NAME, FONT_SIZE_LARGE),
         )
-        switch_1.place(relx=0.5, rely=0.4, anchor="center")
+        switch.place(relx=0.5, rely=0.4, anchor="center")
         exit_button = ctk.CTkButton(
             master=self.tab,
             text="Exit",
