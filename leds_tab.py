@@ -25,25 +25,38 @@ class LEDsTab(Tab):
 
         slider = self.make_color_slider(self.red_slider_event, 0.4, Color("red"))
         slider.set(self.led_color.get_red() * 255)
+        self.red_slider = slider
 
         slider = self.make_color_slider(self.green_slider_event, 0.5, Color("green"))
         slider.set(self.led_color.get_green() * 255)
+        self.green_slider = slider
 
         slider = self.make_color_slider(self.blue_slider_event, 0.6, Color("blue"))
         slider.set(self.led_color.get_blue() * 255)
+        self.blue_slider = slider
 
         # Create a block to show the color of the LED
         color_preview = ctk.CTkLabel(
             master=self.tab,
             text=f"HEX {self.led_color.get_hex_l()}",
             font=(FONT_NAME, FONT_SIZE_LARGE),
+            text_color=self.led_color.get_hex(),
         )
         color_preview.place(relx=0.5, rely=0.7, anchor="center")
         self.color_preview = color_preview
 
     def toggle_led(self):
-        pass
+        state = self.led_switch_var.get()
 
+        for slider, color in [(self.red_slider, "red"), (self.green_slider, "green"), (self.blue_slider, "blue")]:
+            slider.configure(
+                state="normal" if state else "disabled",
+                progress_color=color if state else "gray",
+                button_color=("#3a7ebf", "#1f538d") if state else "gray" # The tuple is the default color as in set in the "dark-blue" theme
+            )
+        
+        self.color_preview.configure(text_color=self.led_color.get_hex() if state else "gray")
+    
     def red_slider_event(self, value: int):
         self.led_color.set_red(value / 255)
         self.update_color_preview()
