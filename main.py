@@ -2,20 +2,20 @@ import customtkinter as ctk
 import subprocess
 import os
 
-
-THEME = "/themes/dark-blue.json"
-DARK = "dark"
-LIGHT = "light"
-
-FONT_NAME = "Roboto"
-FONT_SIZE_NORMAL = 30
-FONT_SIZE_LARGE = 50
-FONT_SIZE_XXLARGE = 120
+from constants import *
+import dashboard
+from dashboard_tab import DashboardTab
 
 
 # Tabs of the app and the index of the current tab
 tabs = ["Dashboard", "LEDs", "Android Auto", "Settings"]
 tab_index = 0
+
+# Dashboard object
+dashboard = dashboard.Dashboard()
+# Dummy values just for fun
+dashboard.rpm = 800
+dashboard.speed = 42
 
 
 # Starts the "autoapp" from OpenAuto
@@ -90,15 +90,8 @@ start_butt = ctk.CTkButton(
 start_butt.place(relx=0.5, rely=0.5, anchor="center")
 
 # Dashboard tab
-dashboard_tab = tabview.tab("Dashboard")
-speed_label = ctk.CTkLabel(
-    master=dashboard_tab, text="42", font=(FONT_NAME, FONT_SIZE_XXLARGE)
-)
-rpm_progress = ctk.CTkProgressBar(
-    master=dashboard_tab, orientation="horizontal", width=screen_width // 2, height=50
-)
-speed_label.place(relx=0.5, rely=0.4, anchor="center")
-rpm_progress.place(relx=0.5, rely=0.7, anchor="center")
+dashboard_tab = DashboardTab(app, tabview.tab("Dashboard"))
+dashboard_tab.setup()
 
 # Settings tab
 settings_tab = tabview.tab("Settings")
