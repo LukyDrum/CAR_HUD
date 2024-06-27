@@ -4,7 +4,7 @@ import os
 
 from constants import *
 import dashboard
-from dashboard_tab import DashboardTab
+from tabs.dashboard_tab import DashboardTab
 
 
 # Tabs of the app and the index of the current tab
