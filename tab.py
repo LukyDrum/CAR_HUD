@@ -8,3 +8,6 @@ class Tab:
 
     def setup(self) -> None:
         pass
+
+    def update_loop(self) -> None:
+        pass

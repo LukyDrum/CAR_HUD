@@ -84,4 +84,5 @@ settings_tab = SettingsTab(app, tabview.tab("Settings"))
 settings_tab.setup()
 
 if __name__ == "__main__":
+    dashboard_tab.update_loop()
     app.mainloop()
