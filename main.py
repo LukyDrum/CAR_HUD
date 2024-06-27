@@ -1,11 +1,12 @@
 import customtkinter as ctk
-import subprocess
 import os
 
 from constants import *
 import dashboard
-from tabs.dashboard_tab import DashboardTab
-from tabs.settings_tab import SettingsTab
+# Tabs
+from dashboard_tab import DashboardTab
+from settings_tab import SettingsTab
+from androidauto_tab import AndroidAutoTab
 
 # Tabs of the app and the index of the current tab
 tabs = ["Dashboard", "LEDs", "Android Auto", "Settings"]
@@ -16,11 +17,6 @@ dashboard = dashboard.Dashboard()
 # Dummy values just for fun
 dashboard.rpm = 800
 dashboard.speed = 42
-
-
-# Starts the "autoapp" from OpenAuto
-def start_android_auto():
-    subprocess.run(["sudo", "autoapp"])
 
 
 # Called when switing tabs using the top buttons
@@ -76,11 +72,8 @@ for tab in tabs:
     next_butt.place(relx=0.9, rely=0.5, anchor="center")
 
 # Android Auto tab
-AA_tab = tabview.tab("Android Auto")
-start_butt = ctk.CTkButton(
-    AA_tab, text="Start", font=(FONT_NAME, FONT_SIZE_XXLARGE), command=start_android_auto
-)
-start_butt.place(relx=0.5, rely=0.5, anchor="center")
+AA_tab = AndroidAutoTab(app, tabview.tab("Android Auto"))
+AA_tab.setup()
 
 # Dashboard tab
 dashboard_tab = DashboardTab(app, tabview.tab("Dashboard"))
