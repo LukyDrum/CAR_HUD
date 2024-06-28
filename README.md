@@ -16,12 +16,13 @@ sudo apt install python3-tk
 
 # To-do
 
-- [] Show dashboard information (velocity, rpm, ...)
-- [] Show engine warnings
-- [] Add more customization options
-   - [] Colors
-   - [] Hiding tabs
-- [] Add swipe controls
-- [] Add Bluetooth connectivity and music streaming
-- [] Make LED controls functional
-- [] Add automatic AndroidAuto start on phone connecting
+- [x] Mockup of the UI with AndroidAuto functionality
+- [ ] Show dashboard information (velocity, rpm, ...)
+- [ ] Show engine warnings
+- [ ] Add more customization options
+   - [ ] Colors
+   - [ ] Hiding tabs
+- [ ] Add swipe controls
+- [ ] Add Bluetooth connectivity and music streaming
+- [ ] Make LED controls functional
+- [ ] Add automatic AndroidAuto start on phone connecting
