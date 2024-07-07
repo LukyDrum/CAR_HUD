@@ -26,3 +26,4 @@ sudo apt install python3-tk
 - [ ] Add Bluetooth connectivity and music streaming
 - [ ] Make LED controls functional
 - [ ] Add automatic AndroidAuto start on phone connecting
+- [ ] Custom installation script
