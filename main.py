@@ -8,11 +8,12 @@ from dashboard_tab import DashboardTab
 from settings_tab import SettingsTab
 from androidauto_tab import AndroidAutoTab
 from leds_tab import LEDsTab
+from music_tab import MusicTab
 
 from info_panel import InfoPanel
 
 # Tabs of the app and the index of the current tab
-tabs = ["Dashboard", "LEDs", "Android Auto", "Settings"]
+tabs = ["Dashboard", "Music", "LEDs", "Android Auto", "Settings"]
 tab_index = 0
 
 # Called when switing tabs using the top buttons
@@ -83,6 +84,9 @@ settings_tab.setup()
 # LEDs tab
 leds_tab = LEDsTab(app, tabview.tab("LEDs"))
 leds_tab.setup()
+
+music_tab = MusicTab(app, tabview.tab("Music"))
+music_tab.setup()
 
 if __name__ == "__main__":
     dashboard_tab.update_loop()
