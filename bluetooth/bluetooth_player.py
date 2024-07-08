@@ -1,5 +1,4 @@
-from song_info import SongInfo
-
+from bluetooth.song_info import SongInfo
 
 class BluetoothPlayer:
     def __init__(self):
