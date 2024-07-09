@@ -57,7 +57,7 @@ class BluetoothPlayer:
 
         try:
             output = subprocess.check_output(cmd.split(" "), timeout=0.5)
-        except subprocess.TimeoutExpired:
+        except (subprocess.TimeoutExpired, subprocess.CalledProcessError):
             return ""
 
         return output.decode("utf-8").strip()
@@ -72,7 +72,7 @@ class BluetoothPlayer:
 
         try:
             output = subprocess.check_output(cmd.split(" "), timeout=0.5)
-        except subprocess.TimeoutExpired:
+        except (subprocess.TimeoutExpired, subprocess.CalledProcessError):
             return ""
 
         return output.decode("utf-8").strip()
