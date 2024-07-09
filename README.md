@@ -24,6 +24,7 @@ sudo apt install python3-tk fonts-noto
    - [ ] Hiding tabs
 - [ ] Add swipe controls
 - [x] Add Bluetooth connectivity and music streaming
+- [ ] Add automatic bluetooth connection
 - [ ] Make LED controls functional
 - [ ] Add automatic AndroidAuto start on phone connecting
 - [ ] Custom installation script
