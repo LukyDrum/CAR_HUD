@@ -19,7 +19,7 @@ class MusicTab(Tab):
             text="Deatwish",
             font=(FONT_NAME, FONT_SIZE_XLARGE),
         )
-        song_title.place(relx=0.5, rely=0.3, anchor="center")
+        song_title.place(relx=0.5, rely=0.2, anchor="center")
         self.song_title = song_title
 
         song_artist = ctk.CTkLabel(
