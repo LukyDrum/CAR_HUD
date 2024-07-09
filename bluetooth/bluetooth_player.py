@@ -53,7 +53,7 @@ class BluetoothPlayer:
 
         cmd = f"dbus-send --system --type=method_call --print-reply --dest=org.bluez /org/bluez/hci0/dev_{self.device.get_dbus_address()}/player0 org.freedesktop.DBus.Properties.Get string:org.bluez.MediaPlayer1 string:Status"
 
-        print("Command:   " + cmd)
+        # print("Command:   " + cmd)
 
         try:
             output = subprocess.check_output(cmd.split(" "), timeout=0.5)
@@ -68,7 +68,7 @@ class BluetoothPlayer:
 
         cmd = f"dbus-send --system --type=method_call --print-reply --dest=org.bluez /org/bluez/hci0/dev_{self.device.get_dbus_address()}/player0 org.freedesktop.DBus.Properties.Get string:org.bluez.MediaPlayer1 string:Track"
 
-        print("Command:   " + cmd)
+        # print("Command:   " + cmd)
 
         try:
             output = subprocess.check_output(cmd.split(" "), timeout=0.5)
