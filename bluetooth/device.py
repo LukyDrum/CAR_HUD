@@ -15,7 +15,7 @@ def get_devices() -> list[BluetoothDevice]:
     output = subprocess.check_output(cmd.split(" "))
     output_lines = output.decode("utf-8").split("\n")
     devices = []
-    for i in range(len(output_lines), step=3):
+    for i in range(0, len(output_lines), 3):
         # Get device address
         line = output_lines[i].strip()
         address = line.split(" ")[1]
