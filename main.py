@@ -91,4 +91,6 @@ music_tab.setup()
 if __name__ == "__main__":
     dashboard_tab.update_loop()
     info_panel.update_loop()
+    music_tab.update_loop()
+
     app.mainloop()

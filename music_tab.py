@@ -53,3 +53,8 @@ class MusicTab(Tab):
             command=self.player.previous,
         )
         play_pause_butt.place(relx=0.5, rely=0.7, anchor="center")
+
+    def update_loop(self) -> None:
+        self.player.update_device()
+        
+        self.app.after(UPDATE_TIME, self.update_loop)
