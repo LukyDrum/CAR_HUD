@@ -85,6 +85,9 @@ class BluetoothPlayer:
     def get_song_info(self) -> SongInfo:
         string = self._get_track()
 
+        if string == "":
+            return SongInfo("", "", "")
+
         json_song = json.loads(string)
 
         return song_info_from_json(json_song)
