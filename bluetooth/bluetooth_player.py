@@ -1,8 +1,8 @@
 import subprocess
-import json
 
-from bluetooth.song_info import SongInfo, song_info_from_json
+from bluetooth.song_info import SongInfo
 from bluetooth.device import BluetoothDevice, get_devices
+from bluetooth.utils import pass_dbus_variant
 
 class BluetoothPlayer:
     def __init__(self):
@@ -88,12 +88,12 @@ class BluetoothPlayer:
         if string == "":
             return SongInfo("", "", "")
 
-        json_song = json.loads(string)
+        song_dictionary = pass_dbus_variant(string, ["Title", "Artist", "Album"])
 
-        return song_info_from_json(json_song)
+        return SongInfo(song_dictionary["Title"], song_dictionary["Artist"], song_dictionary["Album"])
 
     def update_playing_status(self) -> None:
-        self.playing = self._get_status() == "playing"
+        self.playing = "playing" in self._get_status()
 
 
 def run_with_timeout(command: str, timeout: float):
