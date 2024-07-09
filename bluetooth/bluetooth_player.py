@@ -54,7 +54,7 @@ class BluetoothPlayer:
 
         print("Command:   " + cmd)
 
-        output = subprocess.capture_output(cmd.split(" "))
+        output = subprocess.check_output(cmd.split(" "))
 
         return output.decode("utf-8").strip()
 
@@ -63,7 +63,7 @@ class BluetoothPlayer:
 
         print("Command:   " + cmd)
 
-        output = subprocess.capture_output(cmd.split(" "))
+        output = subprocess.check_output(cmd.split(" "))
 
         return output.decode("utf-8").strip()
 
