@@ -75,7 +75,7 @@ class LEDsTab(Tab):
             from_=0,
             to=255,
             width=self.app.winfo_screenwidth() * 0.4,
-            height=50,
+            height=25,
             command=method,
             progress_color=color.get_hex(),
 
