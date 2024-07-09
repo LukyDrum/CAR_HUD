@@ -9,9 +9,9 @@ To make AndroidAuto functional I had to use the OpenAuto project. I had some tro
 # Additional requirements
 
 - As mentioned, you need to have OpenAuto installed
-- You may need to install Tkinter
+- You may need to install Tkinter, Font-noto
 ```
-sudo apt install python3-tk
+sudo apt install python3-tk fonts-noto
 ```
 
 # To-do
@@ -23,7 +23,7 @@ sudo apt install python3-tk
    - [ ] Colors
    - [ ] Hiding tabs
 - [ ] Add swipe controls
-- [ ] Add Bluetooth connectivity and music streaming
+- [x] Add Bluetooth connectivity and music streaming
 - [ ] Make LED controls functional
 - [ ] Add automatic AndroidAuto start on phone connecting
 - [ ] Custom installation script
