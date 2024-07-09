@@ -9,4 +9,7 @@ class SongInfo:
 
 
 def song_info_from_json(json: dict) -> SongInfo:
-    return SongInfo(json["title"], json["artist"], json["album"])
+    try:
+        return SongInfo(json["Title"], json["Artist"], json["Album"])
+    except KeyError:
+        return SongInfo("", "", "")
