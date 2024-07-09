@@ -12,9 +12,13 @@ class BluetoothPlayer:
         base = self._get_base_command()
         cmd = base + " " + f"{self.dbus_object}.Play"
 
+        subprocess.run(cmd.split(" "))
+
     def pause(self) -> None:
         base = self._get_base_command()
         cmd = base + " " + f"{self.dbus_object}.Pause"
+
+        subprocess.run(cmd.split(" "))
 
     def play_pause(self) -> None:
         pass
@@ -35,8 +39,7 @@ class BluetoothPlayer:
                 return dev
     
     def _get_base_command(self) -> str:
-        device = self._get_active_device()
-        return f"dbus-send --system --print-reply --dest=org.bluez /org/bluez/hci0/dev_{device.address.replace(':','_')}/player0"
+        return f"dbus-send --system --print-reply --dest=org.bluez /org/bluez/hci0/dev_{self.device.get_dbus_address()}/player0"
     
     def update_device(self) -> None:
         self.device = self._get_active_device()

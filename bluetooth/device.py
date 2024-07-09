@@ -7,13 +7,19 @@ class BluetoothDevice:
         self.name = name
         self.connected = connected
 
+    def get_dbus_address(self) -> str:
+        return self.address.replace(":", "_")
+
 
 def get_devices() -> list[BluetoothDevice]:
     path = os.path.dirname(__file__) + "/list_bt_devices.sh"
     cmd = f"sh {path}"
 
-    output = subprocess.check_output(cmd.split(" "))
-    output_lines = output.decode("utf-8").split("\n")
+    try:
+        output = subprocess.check_output(cmd.split(" "), timeout=0.1)
+    except subprocess.TimeoutExpired:
+        output = ""
+    output_lines = output.split("\n")
     devices = []
     for i in range(0, len(output_lines), 3):
         if output_lines[i].strip() == "":
