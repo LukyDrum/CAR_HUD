@@ -1,6 +1,6 @@
 import subprocess
 
-from bluetooth.song_info import SongInfo
+from bluetooth.song_info import SongInfo, song_info_from_json
 from bluetooth.device import BluetoothDevice, get_devices
 
 class BluetoothPlayer:
@@ -49,11 +49,38 @@ class BluetoothPlayer:
 
         subprocess.run(cmd.split(" "))
 
+    def _get_status(self) -> str:
+        cmd = f"dbus-send --system --type=method_call --print-reply --dest=org.bluez /org/bluez/hci0/dev_{self.device.get_dbus_address()}/player0 org.freedesktop.DBus.Properties.Get string:org.bluez.MediaPlayer1 string:Status"
+
+        print("Command:   " + cmd)
+
+        output = subprocess.capture_output(cmd.split(" "))
+
+        return output.decode("utf-8").strip()
+
+    def _get_track(self) -> str:
+        cmd = f"dbus-send --system --type=method_call --print-reply --dest=org.bluez /org/bluez/hci0/dev_{self.device.get_dbus_address()}/player0 org.freedesktop.DBus.Properties.Get string:org.bluez.MediaPlayer1 string:Track"
+
+        print("Command:   " + cmd)
+
+        output = subprocess.capture_output(cmd.split(" "))
+
+        return output.decode("utf-8").strip()
 
     def update_device(self) -> None:
         new_dev = self._get_active_device()
         if new_dev != None:
             self.device = self._get_active_device()
+
+    def get_song_info(self) -> SongInfo:
+        string = self._get_track()
+
+        json = json.loads(string)
+
+        return song_info_from_json(json)
+
+    def update_playing_status(self) -> None:
+        self.playing = self._get_status() == "playing"
 
 
 def run_with_timeout(command: str, timeout: float):

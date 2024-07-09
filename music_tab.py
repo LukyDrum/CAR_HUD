@@ -20,6 +20,7 @@ class MusicTab(Tab):
             font=(FONT_NAME, FONT_SIZE_XLARGE),
         )
         song_title.place(relx=0.5, rely=0.3, anchor="center")
+        self.song_title = song_title
 
         song_artist = ctk.CTkLabel(
             master=self.tab,
@@ -27,6 +28,7 @@ class MusicTab(Tab):
             font=(FONT_NAME, FONT_SIZE_LARGE),
         )
         song_artist.place(relx=0.5, rely=0.4, anchor="center")
+        self.song_artist = song_artist
 
 
         # Control buttons
@@ -56,5 +58,12 @@ class MusicTab(Tab):
 
     def update_loop(self) -> None:
         self.player.update_device()
+
+        song_info = self.player.get_song_info()
+
+        self.song_title.configure(text=song_info.title)
+        self.song_artist.configure(text=song_info.artist)
+
+        self.player.update_playing_status()
 
         self.app.after(UPDATE_TIME, self.update_loop)
