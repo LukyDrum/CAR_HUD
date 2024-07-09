@@ -45,11 +45,15 @@ class BluetoothPlayer:
         base = self._get_base_command()
         cmd = base + " " + f"{self.dbus_object}.{command}"
 
+        print("Command:   " + cmd)
+
         subprocess.run(cmd.split(" "))
 
 
     def update_device(self) -> None:
-        self.device = self._get_active_device()
+        new_dev = self._get_active_device()
+        if new_dev != None:
+            self.device = self._get_active_device()
 
 
 def run_with_timeout(command: str, timeout: float):

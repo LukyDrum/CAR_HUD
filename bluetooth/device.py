@@ -17,7 +17,7 @@ def get_devices() -> list[BluetoothDevice]:
 
     output_lines = []
     try:
-        output = subprocess.check_output(cmd.split(" "), timeout=0.1)
+        output = subprocess.check_output(cmd.split(" "), timeout=0.5)
         output_lines = output.decode("utf-8").split("\n")
     except subprocess.TimeoutExpired:
         output = []
