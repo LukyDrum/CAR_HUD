@@ -16,14 +16,20 @@ def get_devices() -> list[BluetoothDevice]:
     output_lines = output.decode("utf-8").split("\n")
     devices = []
     for i in range(0, len(output_lines), 3):
+        if line.strip() == "":
+            continue
+
         # Get device address
         line = output_lines[i].strip()
+        print(line)
         address = line.split(" ")[1]
         # Get device name
         line = output_lines[i + 1].strip()
+        print(line)
         name = line.split(" ", 1)[1]
         # Get device connected status
         line = output_lines[i + 2].strip()
+        print(line)
         connected = True if "yes" in line else False
 
         devices.append(BluetoothDevice(address, name, connected))
