@@ -1,5 +1,6 @@
 import customtkinter as ctk
 import subprocess
+import os
 
 from constants import *
 from tab import Tab
@@ -47,6 +48,7 @@ class SettingsTab(Tab):
 
     # Call update script and restart the app
     def update(self):
-        subprocess.call(["sh", "./update.sh"])
-        subprocess.call(["python3", "./main.py"])
+        path = os.path.dirname(__file__)
+        subprocess.call(["sh", path + "/update.sh"])
+        subprocess.call(["python3", path + "/main.py"])
         self.app.destroy()
