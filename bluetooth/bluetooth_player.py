@@ -7,27 +7,27 @@ class BluetoothPlayer:
     def __init__(self):
         self.dbus_object = "org.bluez.MediaControl1"
         self.device = self._get_active_device()
+        self.playing = False
 
     def play(self) -> None:
-        base = self._get_base_command()
-        cmd = base + " " + f"{self.dbus_object}.Play"
-
-        subprocess.run(cmd.split(" "))
+        self._run_dbus_command("Play")
 
     def pause(self) -> None:
-        base = self._get_base_command()
-        cmd = base + " " + f"{self.dbus_object}.Pause"
-
-        subprocess.run(cmd.split(" "))
+        self._run_dbus_command("Pause")
 
     def play_pause(self) -> None:
-        pass
+        self.playing = not self.playing
+
+        if self.playing:
+            self.play()
+        else:
+            self.pause()
 
     def next(self) -> None:
-        pass
+        self._run_dbus_command("Next")
 
     def previous(self) -> None:
-        pass
+        self._run_dbus_command("Previous")
 
     def song_info(self) -> SongInfo:
         pass
@@ -41,6 +41,13 @@ class BluetoothPlayer:
     def _get_base_command(self) -> str:
         return f"dbus-send --system --print-reply --dest=org.bluez /org/bluez/hci0/dev_{self.device.get_dbus_address()}/player0"
     
+    def _run_dbus_command(self, command: str) -> None:
+        base = self._get_base_command()
+        cmd = base + " " + f"{self.dbus_object}.{command}"
+
+        subprocess.run(cmd.split(" "))
+
+
     def update_device(self) -> None:
         self.device = self._get_active_device()
 
