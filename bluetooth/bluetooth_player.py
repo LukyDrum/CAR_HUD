@@ -32,7 +32,7 @@ class BluetoothPlayer:
     
     def _get_base_command(self) -> str:
         device = self._get_active_device()
-        return f"dbus-send --system --print-reply --dest=org.bluez /org/bluez/hci0/dev_{device.address.replace(":", "_")}/player0"
+        return f"dbus-send --system --print-reply --dest=org.bluez /org/bluez/hci0/dev_{device.address.replace(':','_')}/player0"
     
 
 def run_with_timeout(command: str, timeout: float):
