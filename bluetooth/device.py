@@ -15,11 +15,13 @@ def get_devices() -> list[BluetoothDevice]:
     path = os.path.dirname(__file__) + "/list_bt_devices.sh"
     cmd = f"sh {path}"
 
+    output_lines = []
     try:
         output = subprocess.check_output(cmd.split(" "), timeout=0.1)
+        output_lines = output.decode("utf-8").split("\n")
     except subprocess.TimeoutExpired:
-        output = ""
-    output_lines = output.split("\n")
+        output = []
+
     devices = []
     for i in range(0, len(output_lines), 3):
         if output_lines[i].strip() == "":
