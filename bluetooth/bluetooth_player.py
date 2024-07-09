@@ -5,7 +5,7 @@ from bluetooth.device import BluetoothDevice, get_devices
 
 class BluetoothPlayer:
     def __init__(self):
-        self.dbus_object = "org.bluez.MediaControl1"
+        self.dbus_object = "org.bluez.MediaPlayer1"
         self.device = self._get_active_device()
         self.playing = False
 

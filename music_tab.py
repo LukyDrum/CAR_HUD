@@ -42,7 +42,7 @@ class MusicTab(Tab):
             master=self.tab,
             text="⏭",
             font=(FONT_NAME, self.butt_size),
-            command=self.player.previous,
+            command=self.player.next,
         )
         next_butt.place(relx=0.7, rely=0.7, anchor="center")
 
