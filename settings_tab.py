@@ -1,6 +1,7 @@
 import customtkinter as ctk
 import subprocess
 import os
+from CTkMessagebox import CTkMessagebox
 
 from constants import *
 from tab import Tab
@@ -49,6 +50,11 @@ class SettingsTab(Tab):
     # Call update script and restart the app
     def update(self):
         path = os.path.dirname(__file__)
+
+        # Show popup box
+        CTkMessagebox(title="Update", message="The system is updating.")
+
+
         subprocess.call(["sh", path + "/update.sh"])
         subprocess.call(["python3", path + "/main.py"])
         self.app.destroy()
