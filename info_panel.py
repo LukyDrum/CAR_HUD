@@ -3,6 +3,7 @@ import time
 
 from constants import *
 from bluetooth.bluetooth_player import BluetoothPlayer
+from utils import limit_text
 
 class InfoPanel:
     def __init__(self, app: ctk.CTk, bt_player: BluetoothPlayer) -> None:
@@ -20,7 +21,7 @@ class InfoPanel:
 
         # Show label with the name of the connected device
         bt_label = ctk.CTkLabel(master=self.frame, text="BT", font=(FONT_NAME, FONT_SIZE_NORMAL))
-        bt_label.place(relx=0.1, rely=0.5, anchor="w")
+        bt_label.place(relx=0.01, rely=0.5, anchor="w")
         self.bt_label = bt_label
 
 
@@ -28,9 +29,9 @@ class InfoPanel:
         self.clock.configure(text=time.strftime("%H:%M"))
 
         if self.bt_player.device is not None:
-            self.bt_label.configure(text=f"BT: {self.bt_player.device.name}")
+            self.bt_label.configure(text= limit_text(f"BT: {self.bt_player.device.name}", 25))
         else:
-            self.bt_label.configure(text="")
+            self.bt_label.configure(text="BT not connected")
 
         # Update each second
         self.app.after(1000, self.update_loop)

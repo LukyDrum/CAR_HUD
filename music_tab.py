@@ -3,6 +3,7 @@ import customtkinter as ctk
 from constants import *
 from tab import Tab
 from bluetooth.bluetooth_player import BluetoothPlayer
+from utils import limit_text
 
 
 class MusicTab(Tab):
@@ -62,8 +63,9 @@ class MusicTab(Tab):
 
         song_info = self.player.get_song_info()
 
-        self.song_title.configure(text=song_info.title)
-        self.song_artist.configure(text=song_info.artist)
+        # Limit title to 30 chars and artist to 25
+        self.song_title.configure(text=limit_text(song_info.title, 30))
+        self.song_artist.configure(text=limit_text(song_info.artist, 25))
 
         self.player.update_playing_status()
 
