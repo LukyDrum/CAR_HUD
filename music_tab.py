@@ -50,11 +50,12 @@ class MusicTab(Tab):
 
         play_pause_butt = ctk.CTkButton(
             master=self.tab,
-            text="⏯",
+            text="⏵",
             font=(FONT_NAME, self.butt_size),
             command=self.player.play_pause,
         )
         play_pause_butt.place(relx=0.5, rely=0.7, anchor="center")
+        self.play_pause_butt = play_pause_butt
 
     def update_loop(self) -> None:
         self.player.update_device()
@@ -65,5 +66,10 @@ class MusicTab(Tab):
         self.song_artist.configure(text=song_info.artist)
 
         self.player.update_playing_status()
+
+        if self.player.playing:
+            self.play_pause_butt.configure(text="⏵")
+        else:
+            self.play_pause_butt.configure(text="⏸")
 
         self.app.after(UPDATE_TIME, self.update_loop)

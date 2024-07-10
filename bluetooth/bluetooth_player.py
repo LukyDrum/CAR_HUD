@@ -40,6 +40,9 @@ class BluetoothPlayer:
         return f"dbus-send --system --print-reply --dest=org.bluez /org/bluez/hci0/dev_{self.device.get_dbus_address()}/player0"
     
     def _run_dbus_command(self, command: str) -> None:
+        if self.device is None:
+            return
+
         base = self._get_base_command()
         cmd = base + " " + f"{self.dbus_object}.{command}"
 
