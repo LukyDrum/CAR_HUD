@@ -20,7 +20,7 @@ class InfoPanel:
 
         # Show label with the name of the connected device
         bt_label = ctk.CTkLabel(master=self.frame, text="BT", font=(FONT_NAME, FONT_SIZE_NORMAL))
-        bt_label.place(relx=0.05, rely=0.5, anchor="center")
+        bt_label.place(relx=0.1, rely=0.5, anchor="w")
         self.bt_label = bt_label
 
 

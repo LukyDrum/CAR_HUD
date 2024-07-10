@@ -68,8 +68,8 @@ class MusicTab(Tab):
         self.player.update_playing_status()
 
         if self.player.playing:
-            self.play_pause_butt.configure(text="⏵")
-        else:
             self.play_pause_butt.configure(text="⏸")
+        else:
+            self.play_pause_butt.configure(text="⏵")
 
         self.app.after(UPDATE_TIME, self.update_loop)
