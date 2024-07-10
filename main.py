@@ -51,11 +51,6 @@ app.title("Car HUD")
 tabview = ctk.CTkTabview(master=app, command=tab_button_clicked)
 tabview.pack(padx=20, pady=20, fill="both", expand=True)
 
-# Add infopanel 
-info_panel = InfoPanel(app)
-info_panel.setup()
-
-
 for tab in tabs:
     tabview.add(tab)
     # Place previous and next tab buttons
@@ -87,6 +82,10 @@ leds_tab.setup()
 
 music_tab = MusicTab(app, tabview.tab("Music"))
 music_tab.setup()
+
+# Add infopanel 
+info_panel = InfoPanel(app, music_tab.player)
+info_panel.setup()
 
 if __name__ == "__main__":
     dashboard_tab.update_loop()
