@@ -32,6 +32,7 @@ class SettingsTab(Tab):
             font=(FONT_NAME, FONT_SIZE_LARGE),
             command=self.update,
         )
+        self.update_button = update_button
         controls.append(update_button)
 
         # Restart button
@@ -74,6 +75,9 @@ class SettingsTab(Tab):
     # Call update script and restart the app
     def update(self):
         path = os.path.dirname(__file__)
+
+        # Change text on button
+        self.update_button.configure(text="Updating...")
 
         subprocess.call(["sh", path + "/update.sh"])
         subprocess.call(["python3", path + "/main.py"])
