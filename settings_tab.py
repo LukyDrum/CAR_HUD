@@ -32,12 +32,21 @@ class SettingsTab(Tab):
         )
         update_button.place(relx=0.5, rely=0.5, anchor="center")
 
+        # Restart button
+        restart_button = ctk.CTkButton(
+            master=self.tab,
+            text="Update",
+            font=(FONT_NAME, FONT_SIZE_LARGE),
+            command=self.restart,
+        )
+        restart_button.place(relx=0.5, rely=0.5, anchor="center")
+
         # Exit button
         exit_button = ctk.CTkButton(
             master=self.tab,
             text="Exit",
             font=(FONT_NAME, FONT_SIZE_LARGE),
-            command=self.app.destroy,
+            command=self.exit,
         )
         exit_button.place(relx=0.5, rely=0.7, anchor="center")
 
@@ -52,4 +61,15 @@ class SettingsTab(Tab):
 
         subprocess.call(["sh", path + "/update.sh"])
         subprocess.call(["python3", path + "/main.py"])
+        self.app.destroy()
+
+    # This will restart the app
+    def restart(self):
+        path = os.path.dirname(__file__)
+
+        subprocess.call(["python3", path + "/main.py"])
+        self.app.destroy()
+
+    # This will exit the app
+    def exit(self):
         self.app.destroy()
