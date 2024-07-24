@@ -41,6 +41,15 @@ class SettingsTab(Tab):
         )
         restart_button.place(relx=0.5, rely=0.5, anchor="center")
 
+        # Disconnect Bluetooth button
+        disconnect_bt_button = ctk.CTkButton(
+            master=self.tab,
+            text="Update",
+            font=(FONT_NAME, FONT_SIZE_LARGE),
+            command=self.restart,
+        )
+        disconnect_bt_button.place(relx=0.5, rely=0.5, anchor="center")
+
         # Exit button
         exit_button = ctk.CTkButton(
             master=self.tab,
@@ -69,6 +78,11 @@ class SettingsTab(Tab):
 
         subprocess.call(["python3", path + "/main.py"])
         self.app.destroy()
+
+    def disconnect_bt(self):
+        path = os.path.dirname(__file__)
+
+        subprocess.call(["sh", path + "/bluetooth/disconnect.sh"])
 
     # This will exit the app
     def exit(self):
