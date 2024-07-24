@@ -65,7 +65,7 @@ class SettingsTab(Tab):
         y = 0.1
         for control in controls:
             control.place(relx=0.5, rely=y, anchor="center")
-            y += 0.15
+            y += 0.2
 
 
     # Switch theme from light to dark and viceversa
