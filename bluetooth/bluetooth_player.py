@@ -84,6 +84,8 @@ class BluetoothPlayer:
         new_dev = self._get_active_device()
         if new_dev != None:
             self.device = self._get_active_device()
+        else:
+            self.device = BluetoothDevice("", "", False)
 
     def get_song_info(self) -> SongInfo:
         string = self._get_track()
