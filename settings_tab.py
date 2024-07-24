@@ -12,6 +12,8 @@ class SettingsTab(Tab):
         self.theme_switch_var = ctk.StringVar(value=DARK)
 
     def setup(self) -> None:
+        controls = []
+
         switch = ctk.CTkSwitch(
             master=self.tab,
             text="Light/Dark Theme",
@@ -21,7 +23,7 @@ class SettingsTab(Tab):
             offvalue=LIGHT,
             font=(FONT_NAME, FONT_SIZE_LARGE),
         )
-        switch.place(relx=0.5, rely=0.3, anchor="center")
+        controls.append(switch)
 
         # Update button
         update_button = ctk.CTkButton(
@@ -30,7 +32,7 @@ class SettingsTab(Tab):
             font=(FONT_NAME, FONT_SIZE_LARGE),
             command=self.update,
         )
-        update_button.place(relx=0.5, rely=0.4, anchor="center")
+        controls.append(update_button)
 
         # Restart button
         restart_button = ctk.CTkButton(
@@ -39,7 +41,7 @@ class SettingsTab(Tab):
             font=(FONT_NAME, FONT_SIZE_LARGE),
             command=self.restart,
         )
-        restart_button.place(relx=0.5, rely=0.5, anchor="center")
+        controls.append(restart_button)
 
         # Disconnect Bluetooth button
         disconnect_bt_button = ctk.CTkButton(
@@ -48,7 +50,7 @@ class SettingsTab(Tab):
             font=(FONT_NAME, FONT_SIZE_LARGE),
             command=self.disconnect_bt,
         )
-        disconnect_bt_button.place(relx=0.5, rely=0.6, anchor="center")
+        controls.append(disconnect_bt_button)
 
         # Exit button
         exit_button = ctk.CTkButton(
@@ -57,7 +59,12 @@ class SettingsTab(Tab):
             font=(FONT_NAME, FONT_SIZE_LARGE),
             command=self.exit,
         )
-        exit_button.place(relx=0.5, rely=0.7, anchor="center")
+        controls.append(exit_button)
+
+        y = 0.1
+        for control in controls:
+            control.place(relx=0.5, rely=y, anchor="center")
+            y += 0.15
 
 
     # Switch theme from light to dark and viceversa
