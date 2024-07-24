@@ -35,7 +35,7 @@ class SettingsTab(Tab):
         # Restart button
         restart_button = ctk.CTkButton(
             master=self.tab,
-            text="Update",
+            text="Restart",
             font=(FONT_NAME, FONT_SIZE_LARGE),
             command=self.restart,
         )
@@ -44,11 +44,11 @@ class SettingsTab(Tab):
         # Disconnect Bluetooth button
         disconnect_bt_button = ctk.CTkButton(
             master=self.tab,
-            text="Update",
+            text="BT Disconnect",
             font=(FONT_NAME, FONT_SIZE_LARGE),
-            command=self.restart,
+            command=self.disconnect_bt,
         )
-        disconnect_bt_button.place(relx=0.5, rely=0.5, anchor="center")
+        disconnect_bt_button.place(relx=0.5, rely=0.6, anchor="center")
 
         # Exit button
         exit_button = ctk.CTkButton(
