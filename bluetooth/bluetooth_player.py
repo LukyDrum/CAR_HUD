@@ -93,6 +93,10 @@ class BluetoothPlayer:
 
         song_dictionary = pass_dbus_variant(string, ["Title", "Artist", "Album"])
 
+        # If the song is from extended random Spotify search the artist name will contain that info
+        # This will only keep the artist name
+        song_dictionary["Artist"] = song_dictionary["Artist"].split("•")[0]
+
         return SongInfo(song_dictionary["Title"], song_dictionary["Artist"], song_dictionary["Album"])
 
     def update_playing_status(self) -> None:
