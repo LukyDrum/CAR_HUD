@@ -14,7 +14,7 @@ from info_panel import InfoPanel
 
 # Tabs of the app and the index of the current tab
 tabs = ["Dashboard", "Music", "LEDs", "Android Auto", "Settings"]
-tab_index = 0
+tab_index = 1 # Default to "Music"
 
 # Called when switing tabs using the top buttons
 def tab_button_clicked():
@@ -86,6 +86,9 @@ music_tab.setup()
 # Add infopanel 
 info_panel = InfoPanel(app, music_tab.player)
 info_panel.setup()
+
+# Open Music tab as the first tab
+tabview.set(tabs[tab_index])
 
 if __name__ == "__main__":
     dashboard_tab.update_loop()
