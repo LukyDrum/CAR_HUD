@@ -30,7 +30,7 @@ class SettingsTab(Tab):
             font=(FONT_NAME, FONT_SIZE_LARGE),
             command=self.update,
         )
-        update_button.place(relx=0.5, rely=0.5, anchor="center")
+        update_button.place(relx=0.5, rely=0.4, anchor="center")
 
         # Restart button
         restart_button = ctk.CTkButton(
