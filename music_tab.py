@@ -1,4 +1,5 @@
 import customtkinter as ctk
+import threading
 
 from constants import *
 from tab import Tab
@@ -12,6 +13,8 @@ class MusicTab(Tab):
 
         self.player = BluetoothPlayer()
         self.butt_size = FONT_SIZE_XLARGE
+
+        self.thread = None
 
     def setup(self) -> None:
         # Song info
@@ -59,6 +62,14 @@ class MusicTab(Tab):
         self.play_pause_butt = play_pause_butt
 
     def update_loop(self) -> None:
+        thread = threading.Thread(target= self.update_async)
+        thread.start()
+
+        self.thread = thread
+
+        self.app.after(UPDATE_TIME, self.update_loop)
+
+    def update_async(self) -> None:
         self.player.update_device()
 
         song_info = self.player.get_song_info()
@@ -74,4 +85,5 @@ class MusicTab(Tab):
         else:
             self.play_pause_butt.configure(text="⏵")
 
-        self.app.after(UPDATE_TIME, self.update_loop)
+    def end_thread(self) -> None:
+        self.thread.join()

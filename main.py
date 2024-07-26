@@ -96,3 +96,6 @@ if __name__ == "__main__":
     music_tab.update_loop()
 
     app.mainloop()
+
+# End the music tab thread when program closes
+music_tab.end_thread()
